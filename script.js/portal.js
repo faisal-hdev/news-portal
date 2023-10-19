@@ -11,12 +11,15 @@ const displayCategory = (categories) => {
         const categoryContainer =document.getElementById('category-container')
         const categoryDiv = document.createElement('div')
         categoryDiv.innerHTML = `
-                <a class="text-lg text-gray-600" href="#">${category.category_name}</a>
+            <a class="text-lg text-gray-600" href="#">${category.category_name}</a>
         `;
         categoryContainer.appendChild(categoryDiv);
     });
 }
 allCategoryLoad();
+
+
+
 
 const categoryDataLoad = () => {
     const url = `https://openapi.programming-hero.com/api/news/category/01`
@@ -25,34 +28,52 @@ const categoryDataLoad = () => {
         .then(data => displayCategoryData(data.data))
 };
 
+const seeMore = (value, start, end) => {
+    const res = value.slice(start, end)
+    console.log(res);
+}
+
+
 const displayCategoryData = (categoriesData) => {
-    console.log(categoriesData);
+  /*   const seeMore = () => {
+        const ck = xzx.slice(0, xzx.length)
+        str = ck
+    }; */
+    const xzx = categoriesData[0].details;
+    const str = xzx.slice(0, 140)
+
+    // console.log(str);
+    // console.log(categoriesData);
     categoriesData.forEach(singleData => {
         const cardContainer = document.getElementById('card-container');
         const categoryData = document.createElement('div');
         categoryData.innerHTML = `
             <div class="card lg:card-side bg-base-100 shadow-xl mt-12">
-                <figure><img class="p-6" src="${singleData.thumbnail_url}" alt="Album"/></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Title : ${singleData.title ? singleData.title : 'N/A'}</h2>
-                    <p>${singleData.detail ? singleData.detail : 'N/A' }</p>
-                    <div class="card-actions flex justify-between items-center">
-                        <div class="flex">
-                            <img class="mask w-12 mask-squircle" src="${singleData.author.img}" />
-                            <div class="ml-5">
-                                <p>${singleData.author.name}</p>
-                                <p>${singleData.author.published_date}</p>
-                            </div>
+            <figure><img class="p-6" src="${singleData.thumbnail_url}" alt="Album"/></figure>
+            <div class="card-body">
+                <h2 class="card-title">Title : ${singleData.title ? singleData.title : 'N/A'}</h2>
+            <p class="mb-4 max-w-[800px]">${str ? str : 'N/A'} <button onclick="${seeMore(xzx, 0 , xzx.length)}">...</button> </p>
+                <div class="card-actions flex justify-between items-center">
+                    <div class="flex">
+                        <img class="mask w-12 mask-squircle" src="${singleData.author.img}" />
+                        <div class="ml-5">
+                        <p>${singleData.author.name}</p>
+                        <p>${singleData.author.published_date}</p>
                         </div>
-                        <div>
-                            <p>Total Views : ${singleData.rating.number ? singleData.rating.number : 'N/A' }</p>
-                        </div>
-                        <button class="btn btn-xs sm:btn-sm md:btn-md">Show details</button>
                     </div>
+                    <div>
+                    <p>Total Views : ${singleData.rating.number ? singleData.rating.number : 'N/A' }</p>
+                    </div>
+                    <button onclick="my_modal_3.showModal()" class="btn btn-xs sm:btn-sm md:btn-md">Show details</button>
                 </div>
+            </div>
             </div>
         `;
         cardContainer.appendChild(categoryData); 
-    });  
+    });
 };
+
+
+
+
 categoryDataLoad();

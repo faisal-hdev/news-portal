@@ -17,7 +17,7 @@
        <section class="container mx-auto mt-4 mb-2">
         <div class="navbar bg-base-100 w-5/6 mx-auto">
             <div class="flex-1">
-              <a class="text-2xl cursor-pointer p-1">echoNews--</a>
+              <a class="cursor-pointer p-1 hidden md:block text-2xl" href="#">newsPortal--</a>
             </div>
             <div class="flex-none">
               <div class="dropdown dropdown-end">
@@ -28,7 +28,7 @@
                   </div>
                 </label>
               </div>
-              <div class="dropdown dropdown-end ">
+              <div class="dropdown dropdown-end hidden sm:block ">
                 <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                   <div class="w-10 rounded-full">
                     <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg" />
@@ -58,23 +58,22 @@
            </div>
       </section >
 
+      <section>
+        <!-- Loading spinner section -->
+        <div class="container mx-auto justify-center flex ">
+          <span class="loading loading-spinner loading-lg text-primary hidden"></span>
+        </div>
+      </section>
+
       <!-- Category Card section -->
       <section class="mt-10">
-        <div id="card-container" class="container mx-auto mb-20 w-5/6">
-        </div>
+        <div id="card-container" class="container mx-auto mb-20 w-5/6 mt-10 "></div>
       </section>
 
       <!-- Modal section -->
       <section>
-        <!-- You can open the modal using ID.showModal() method -->
-        <dialog id="my_modal_3" class="modal">
-          <div class="modal-box">
-            <form method="dialog">
-              <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            </form>
-            <h3 class="font-bold text-lg">Hello!</h3>
-            <p class="py-4">Press ESC key or click on ✕ button to close</p>
-          </div>
+        <!-- Open the modal using ID.showModal() method -->
+        <dialog id="my_modal_2" class="modal">
         </dialog>
       </section>
     </main>

@@ -71,7 +71,7 @@ const displayCategoryDetails = (categoryDetailData) => {
             <h4 class="mb-2">Category ID : ${categoryDetailData.category_id ? categoryDetailData.category_id : 'N/A'}</h4>
             <h4 class="mb-2">Total Views : ${categoryDetailData.total_view ? categoryDetailData.total_view : 'N/A'}</h4>
             <h4 class="mb-2">Author Name : ${categoryDetailData.author.name ? categoryDetailData.author.name : 'N/A'}</h4>
-            <h4 class="mb-2">Author Name : ${categoryDetailData.author.published_date ? categoryDetailData.published_date : 'N/A'}</h4>
+            <h4 class="mb-2">Author Name : ${categoryDetailData.author.published_date ? categoryDetailData.author.published_date : 'N/A'}</h4>
             </div>
             </div>
             <form method="dialog" class="modal-backdrop">

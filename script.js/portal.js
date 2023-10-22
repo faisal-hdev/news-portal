@@ -6,11 +6,12 @@ const allCategoryLoad = () => {
 };
 
 const displayCategory = (categories) => {
-    categories.forEach(category => {
+    categories.forEach(category => { 
         const categoryContainer = document.getElementById('category-container')
         const categoryDiv = document.createElement('div')
+        // start spinner loader and dynamically data show in onclick
         categoryDiv.innerHTML = `
-            <a onclick="categoryDataLoad('${category?.category_id}')" class="text-lg text-gray-600" href="#">${category.category_name}</a>
+            <a onclick="categoryDataLoad('${category?.category_id}'); toggleSpinner(true)" class="text-lg text-gray-600" href="#">${category.category_name}</a>
         `;
         categoryContainer.appendChild(categoryDiv);
     });
@@ -25,6 +26,8 @@ const categoryDataLoad = (id) => {
 };
 
 const displayCategoryData = (categoryData) => {
+    // Display 10 data only
+    categoryData = categoryData.slice(0, 10);
     categoryData.forEach(singleData => {
         const categoryContainer = document.getElementById('card-container')
         const carDiv = document.createElement('div')
@@ -53,6 +56,9 @@ const displayCategoryData = (categoryData) => {
         `;
         categoryContainer.appendChild(carDiv);
     })
+    // Stop spinner loader 
+    toggleSpinner(false);
+    
 };
 
 const loadCategoryDetails = (news_id) => {
@@ -82,6 +88,15 @@ const displayCategoryDetails = (categoryDetailData) => {
 };
 loadCategoryDetails();
 
+const toggleSpinner = (isLading) => {
+    const spinLoaderEl = document.getElementById('spin-loader');
+    if (isLading) {
+        spinLoaderEl.classList.remove('hidden')
+    } else {
+        spinLoaderEl.classList.add('hidden')
+    }
+}
 
 
-categoryDataLoad('02');
+
+categoryDataLoad();
